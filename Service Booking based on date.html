@@ -1,0 +1,91 @@
+<html>
+    <head></head>
+    <body>
+        <center>
+            <form>
+                <table>
+                    <tr>
+                        <td>Service start date:</td>
+                        <td><input type="date" id="date1"></td>
+                    </tr>
+                    <tr>
+                        <td>Service maximum end date:</td>
+                        <td><input type="date" id="date2"></td>
+                    </tr>
+                    <tr>
+                        <td>Ending date:</td>
+                        <td><input type="date" id="date3"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="button" onclick="f1()" value="Check dates"></td>
+                    </tr>
+                </table>
+            </form>
+        </center>
+        
+        <script type="text/javascript">
+
+            function f1()
+            {
+
+                var today = new Date();
+                var Today = new Date(today.getFullYear(),(today.getMonth()),today.getDate());
+                var aMonthAfter = new Date(today.getFullYear(),(today.getMonth()+1),today.getDate());
+
+                var date1=document.getElementById("date1").value.split("-");
+                var date2=document.getElementById("date2").value.split("-");
+                var date3=document.getElementById("date3").value.split("-");
+
+                var startDate=new Date(date1);
+                var endDate=new Date(date2);
+                var terminationDate=new Date(date3);
+
+                alert(Today);
+                alert(startDate)
+                alert(endDate)
+                alert(terminationDate)
+
+                if(startDate<Today)
+                {
+                    alert("The start date should not be a day before current date");
+                }
+                else if(endDate<Today)
+                {
+                    alert("The end date should not be a day before current date");
+                }
+                else if(terminationDate<Today)
+                {
+                    alert("The closing date should not be a day before current date");
+                }
+                else if(endDate<Today)
+                {
+                    alert("The end date should not be a day before current date");
+                }
+                else if(startDate>endDate||startDate>terminationDate)
+                {
+                    alert("Invalid entry."+
+                    "\n Start date doesn\'t match with end and closing date.");
+                }
+                else if(terminationDate>endDate)
+                {
+                    alert("Closing must be done on or before the end date");
+                }
+                else if((endDate-startDate)>14)
+                {
+                    alert("All activites should be done within 2 weeks.");
+                }
+                else if(startDate>=aMonthAfter||(endDate>=aMonthAfter+14)||(terminationDate>=aMonthAfter+13))
+                {
+                    alert("Maximum service period is 30 days");
+                }
+                else
+                {
+                    alert("Success");
+                }
+
+            }
+
+        </script>
+
+    </body>
+</html>
